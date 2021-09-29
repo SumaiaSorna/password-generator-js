@@ -100,80 +100,148 @@ const specialCharacterArray = [
 
 // check
 
-const passwordLength;
-const uppercaseCheck;
-const numberCheck;
-const specialCharacterCheck;
+let passwordLength;
+let uppercaseCheck;
+let lowercaseCheck;
+let numberCheck;
+let specialCharacterCheck;
 
 // function used to determine the length of the password
 function determineLength() {
-  passwordLength = prompt("Choose how many characters long you'd like your password to be between 8-128 characters")
+  const promptData = prompt(
+    "Choose how many characters long you'd like your password to be between 8-128 characters"
+  );
+  if (promptData < 8) {
+    alert("password length must be a number between 8 to 128");
+  } else if (promptData > 128) {
+    alert("Password length must be a number between 8-128 characters");
+  } else if (isNaN(promptData)) {
+    alert("Password length must be a number between 8-128 characters");
+  } else {
+    alert(
+      "The next three screens will ask you what types of characters you would like to be included in your password.If you choose 'No' for all, your password will only contain lowercase letters."
+    );
+    passwordLength = promptData;
+  }
 }
-
-// condition apply
-
-if (passwordLength <8) {
-alert("password length must be a number between 8 to 128"); 
-determineLength();
-
-} else if (passwordLength>128) {
-  alert("Password length must be a number between 8-128 characters");
-  determineLength(); 
-
-}else if (isNaN(passwordLength)){
-  alert("Password length must be a number between 8-128 characters");
-  determineLength();
-
-}else {
-  alert("The next three screens will ask you what types of characters you would like to be included in your password.If you choose 'No' for all, your password will only contain lowercase letters.")
-}
-
-  return passwordLength;
-
-} 
-
-
 
 // function used to determine whether the user wants to include uppercase characters in the password
 
-  function determineUpperCase(){
-  uppercaseCheck = prompt("Do you want to include uppercase letters in your password?(Yes or No)")
+function determineUppercase() {
+  uppercaseCheck = prompt(
+    "Do you want to include uppercase letters in your password? (Yes or No)"
+  );
   uppercaseCheck = uppercaseCheck.toLowerCase();
 
   if (uppercaseCheck === null || uppercaseCheck === "") {
     alert("Please answer Yes or No");
-    determineUpperCase();
-
-  }else if (uppercaseCheck === "yes" || uppercaseCheck ==="y"){
+    determineUppercase();
+  } else if (uppercaseCheck === "yes" || uppercaseCheck === "y") {
     uppercaseCheck = true;
     return uppercaseCheck;
-
-  }else if (uppercaseCheck === "no" || uppercaseCheck ==="n"){
+  } else if (uppercaseCheck === "no" || uppercaseCheck === "n") {
     uppercaseCheck = false;
     return uppercaseCheck;
-  
-  }else {
+  } else {
     alert("Please answer Yes or No");
     determineUppercase();
   }
-  return uppercaseCheck;
+ 
 }
 
-  //Function used to determine whether the user wants to include numbers in the password
+//function used to determine whether the user wants to include lowercase characters in the password
 
+// function determineLowercase() {
+//   uppercaseCheck = prompt(
+//     "Do you want to include uppercase letters in your password? (Yes or No)"
+//   );
+//   // lowercaseCheck = lowercaseCheck.toLowerCase();
 
+//   if (uppercaseCheck === null || uppercaseCheck === "") {
+//     alert("Please answer Yes or No");
+//     determineUppercase();
+//   } else if (uppercaseCheck === "yes" || uppercaseCheck === "y") {
+//     uppercaseCheck = true;
+//     return uppercaseCheck;
+//   } else if (uppercaseCheck === "no" || uppercaseCheck === "n") {
+//     uppercaseCheck = false;
+//     return uppercaseCheck;
+//   } else {
+//     alert("Please answer Yes or No");
+//     determineUppercase();
+//   }
+//  
+// }
 
+//Function used to determine whether the user wants to include numbers in the password
 
+function determineNumbers() {
+  numberCheck = prompt(
+    "Do you want to include numbers in your password? (Yes or No)"
+  );
+  numberCheck = numberCheck.toLowerCase();
 
+  if (numberCheck === null || numberCheck === "") {
+    alert("Please answer Yes or No");
+    determineNumbers();
+  } else if (numberCheck === "yes" || numberCheck === "y") {
+    numberCheck = true;
+    return numberCheck;
+  } else if (numberCheck === "no" || numberCheck === "n") {
+    numberCheck = false;
+    return numberCheck;
+  } else {
+    alert("Please answer Yes or No");
+    determineNumbers();
+  }
+  
+}
 
 //Function used to determine whether the user wants to include special characters in the password
 
+function determineSpecial() {
+  specialCheck = prompt(
+    "Do you want to include special characters in your password? (Yes or No)"
+  );
+  specialCheck = specialCheck.toLowerCase();
+
+  if (specialCheck === null || specialCheck === "") {
+    alert("Please answer Yes or No");
+    determineSpecial();
+  } else if (specialCheck === "yes" || specialCheck === "y") {
+    specialCheck = true;
+    return specialCheck;
+  } else if (specialCheck === "no" || specialCheck === "n") {
+    specialCheck = false;
+    return specialCheck;
+  } else {
+    alert("Please answer Yes or No");
+    determineSpecial();
+  }
+  
+}
+
+//Function used to take all the input from the previous functions and generate a password using a random number generator
+// apply method (charAt)
+function generatePassword(){
+
+  determineLength();
+  console.log(promptData);
+
+  determineUppercase();
+  console.log(uppercaseCheck);
+
+  determineLowercase();
+  console.log(LowercaseCheck);
 
 
- //Function used to take all the input from the previous functions and generate a password using a random number generator
- // apply method
+  determineNumbers();
+  console.log(numberCheck);
 
+  determineSpecial();
+  console.log(specialCheck);
 
+// function generatePassword
 
 // DONT MODIFY !!!!!!!!!!!!!!
 // Write password to the #password input
