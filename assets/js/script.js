@@ -122,6 +122,7 @@ function determineLength() {
       "The next three screens will ask you what types of characters you would like to be included in your password.If you choose 'No' for all, your password will only contain lowercase letters."
     );
     passwordLength = promptData;
+    console.log(passwordLength);
   }
 }
 
@@ -146,32 +147,29 @@ function determineUppercase() {
     alert("Please answer Yes or No");
     determineUppercase();
   }
- 
 }
 
 //function used to determine whether the user wants to include lowercase characters in the password
 
-// function determineLowercase() {
-//   uppercaseCheck = prompt(
-//     "Do you want to include uppercase letters in your password? (Yes or No)"
-//   );
-//   // lowercaseCheck = lowercaseCheck.toLowerCase();
+function determineLowercase() {
+  lowercaseCheck = prompt(
+    "Do you want to include uppercase letters in your password? (Yes or No)"
+  );
 
-//   if (uppercaseCheck === null || uppercaseCheck === "") {
-//     alert("Please answer Yes or No");
-//     determineUppercase();
-//   } else if (uppercaseCheck === "yes" || uppercaseCheck === "y") {
-//     uppercaseCheck = true;
-//     return uppercaseCheck;
-//   } else if (uppercaseCheck === "no" || uppercaseCheck === "n") {
-//     uppercaseCheck = false;
-//     return uppercaseCheck;
-//   } else {
-//     alert("Please answer Yes or No");
-//     determineUppercase();
-//   }
-//  
-// }
+  if (lowercaseCheck === null || lowercaseCheck === "") {
+    alert("Please answer Yes or No");
+    determineLowercase();
+  } else if (lowercaseCheck === "yes" || lowercaseCheck === "y") {
+    lowercaseCheck = true;
+    return lowercaseCheck;
+  } else if (lowercaseCheck === "no" || lowercaseCheck === "n") {
+    lowercaseCheck = false;
+    return lowercaseCheck;
+  } else {
+    alert("Please answer Yes or No");
+    determineLowercase();
+  }
+}
 
 //Function used to determine whether the user wants to include numbers in the password
 
@@ -194,7 +192,6 @@ function determineNumbers() {
     alert("Please answer Yes or No");
     determineNumbers();
   }
-  
 }
 
 //Function used to determine whether the user wants to include special characters in the password
@@ -218,28 +215,35 @@ function determineSpecial() {
     alert("Please answer Yes or No");
     determineSpecial();
   }
-  
 }
 
 //Function used to take all the input from the previous functions and generate a password using a random number generator
 // apply method (charAt)
-function generatePassword(){
-
+function generatePassword() {
   determineLength();
-  console.log(promptData);
+  console.log(passwordLength);
 
   determineUppercase();
   console.log(uppercaseCheck);
 
   determineLowercase();
-  console.log(LowercaseCheck);
-
+  console.log(lowercaseCheck);
 
   determineNumbers();
   console.log(numberCheck);
 
   determineSpecial();
   console.log(specialCheck);
+}
+
+// //forloop
+// for (const i=0, i < passwordLength; i++) {
+//   password += characters.charAt(Math.floor(Math.random() * characters.length));
+
+// }
+
+// return password
+// }
 
 // function generatePassword
 
