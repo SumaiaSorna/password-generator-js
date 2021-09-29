@@ -63,7 +63,7 @@ const lowercaseArray = [
 
 const numArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
-const specialcharacterArray = [
+const specialCharacterArray = [
   "!",
   '"',
   "#",
@@ -98,25 +98,61 @@ const specialcharacterArray = [
   "~",
 ];
 
-function generatePassword() {
-  const password = "";
-  const passwordChar = "";
+// check
 
-  // user prompt to select password lenth
+const passwordLength;
+const uppercaseCheck;
+const numberCheck;
+const specialCharacterCheck;
 
-  const passwordLenth = prompt(
-    "How many number of Character you want between 8 and 128?"
-  );
-  passwordLenth = parseInt(passwordLenth);
-
-  if (passwordLenth >= 8 && passwordLenth <= 128) {
-    alert(
-      "password must have more than and equal 8 charaters and password much not have more than128 characters "
-    );
-    return;
-  }
+// function used to determine the length of the password
+function determineLength() {
+  passwordLenth = prompt("Choose how many characters long you'd like your password to be between 8-128 characters")
 }
 
+// condition apply
+
+if (passwordLength >=8 && passwordLength <= 128) {
+alert("password length must be a number between 8 to 128");  
+
+
+} else  {
+  alert()
+
+  return passwordLength;
+
+}
+
+// function used to determine whether the user wants to include uppercase characters in the password
+
+function determineUpperCase(){
+  uppercaseCheck = confirm("Do you want to include uppercase letters in your password?(Yes or No)")
+  uppercaseCheck = uppercaseCheck.toLowerCase();
+
+  if () {
+
+  } else {
+
+  }
+
+
+  //Function used to determine whether the user wants to include numbers in the password
+
+
+
+
+
+
+//Function used to determine whether the user wants to include special characters in the password
+
+
+
+
+
+
+
+
+// DONT MODIFY !!!!!!!!!!!!!!
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
