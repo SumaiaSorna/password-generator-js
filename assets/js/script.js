@@ -1,7 +1,7 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-// store arrays of character
+// store arrays of characters
 
 const uppercaseArray = [
   "A",
@@ -99,7 +99,22 @@ const specialcharacterArray = [
 ];
 
 function generatePassword() {
-  // PLEASE ADD ALL YOUR CODE HERE
+  const password = "";
+  const passwordChar = "";
+
+  // user prompt to select password lenth
+
+  const passwordLenth = prompt(
+    "How many number of Character you want between 8 and 128?"
+  );
+  passwordLenth = parseInt(passwordLenth);
+
+  if (passwordLenth >= 8 && passwordLenth <= 128) {
+    alert(
+      "password must have more than and equal 8 charaters and password much not have more than128 characters "
+    );
+    return;
+  }
 }
 
 // Write password to the #password input
