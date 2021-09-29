@@ -107,34 +107,57 @@ const specialCharacterCheck;
 
 // function used to determine the length of the password
 function determineLength() {
-  passwordLenth = prompt("Choose how many characters long you'd like your password to be between 8-128 characters")
+  passwordLength = prompt("Choose how many characters long you'd like your password to be between 8-128 characters")
 }
 
 // condition apply
 
-if (passwordLength >=8 && passwordLength <= 128) {
-alert("password length must be a number between 8 to 128");  
+if (passwordLength <8) {
+alert("password length must be a number between 8 to 128"); 
+determineLength();
 
+} else if (passwordLength>128) {
+  alert("Password length must be a number between 8-128 characters");
+  determineLength(); 
 
-} else  {
-  alert()
+}else if (isNaN(passwordLength)){
+  alert("Password length must be a number between 8-128 characters");
+  determineLength();
+
+}else {
+  alert("The next three screens will ask you what types of characters you would like to be included in your password.If you choose 'No' for all, your password will only contain lowercase letters.")
+}
 
   return passwordLength;
 
-}
+} 
+
+
 
 // function used to determine whether the user wants to include uppercase characters in the password
 
-function determineUpperCase(){
-  uppercaseCheck = confirm("Do you want to include uppercase letters in your password?(Yes or No)")
+  function determineUpperCase(){
+  uppercaseCheck = prompt("Do you want to include uppercase letters in your password?(Yes or No)")
   uppercaseCheck = uppercaseCheck.toLowerCase();
 
-  if () {
+  if (uppercaseCheck === null || uppercaseCheck === "") {
+    alert("Please answer Yes or No");
+    determineUpperCase();
 
-  } else {
+  }else if (uppercaseCheck === "yes" || uppercaseCheck ==="y"){
+    uppercaseCheck = true;
+    return uppercaseCheck;
 
+  }else if (uppercaseCheck === "no" || uppercaseCheck ==="n"){
+    uppercaseCheck = false;
+    return uppercaseCheck;
+  
+  }else {
+    alert("Please answer Yes or No");
+    determineUppercase();
   }
-
+  return uppercaseCheck;
+}
 
   //Function used to determine whether the user wants to include numbers in the password
 
@@ -147,8 +170,8 @@ function determineUpperCase(){
 
 
 
-
-
+ //Function used to take all the input from the previous functions and generate a password using a random number generator
+ // apply method
 
 
 
