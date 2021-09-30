@@ -129,111 +129,135 @@ function determineLength() {
 // function used to determine whether the user wants to include uppercase characters in the password
 
 function determineUppercase() {
-  uppercaseCheck = prompt(
+  uppercaseCheck = confirm(
     "Do you want to include uppercase letters in your password? (Yes or No)"
   );
   uppercaseCheck = uppercaseCheck.toLowerCase();
+  console.log(uppercaseCheck);
 
-  if (uppercaseCheck === null || uppercaseCheck === "") {
-    alert("Please answer Yes or No");
-    determineUppercase();
-  } else if (uppercaseCheck === "yes" || uppercaseCheck === "y") {
-    uppercaseCheck = true;
-    return uppercaseCheck;
-  } else if (uppercaseCheck === "no" || uppercaseCheck === "n") {
-    uppercaseCheck = false;
-    return uppercaseCheck;
-  } else {
-    alert("Please answer Yes or No");
-    determineUppercase();
-  }
+  //   if (uppercaseCheck === null || uppercaseCheck === "") {
+  //     alert("Please answer Yes or No");
+  //     determineUppercase();
+  //   } else if (uppercaseCheck === "yes" || uppercaseCheck === "y") {
+  //     uppercaseCheck = true;
+  //     return uppercaseCheck;
+  //   } else if (uppercaseCheck === "no" || uppercaseCheck === "n") {
+  //     uppercaseCheck = false;
+  //     return uppercaseCheck;
+  //   } else {
+  //     alert("Please answer Yes or No");
+  //     determineUppercase();
+  //   }
 }
 
 //function used to determine whether the user wants to include lowercase characters in the password
 
 function determineLowercase() {
-  lowercaseCheck = prompt(
+  lowercaseCheck = confirm(
     "Do you want to include lowercase letters in your password? (Yes or No)"
   );
 
-  if (lowercaseCheck === null || lowercaseCheck === "") {
-    alert("Please answer Yes or No");
-    determineLowercase();
-  } else if (lowercaseCheck === "yes" || lowercaseCheck === "y") {
-    lowercaseCheck = true;
-    return lowercaseCheck;
-  } else if (lowercaseCheck === "no" || lowercaseCheck === "n") {
-    lowercaseCheck = false;
-    return lowercaseCheck;
-  } else {
-    alert("Please answer Yes or No");
-    determineLowercase();
-  }
+  // if (lowercaseCheck === null || lowercaseCheck === "") {
+  //   alert("Please answer Yes or No");
+  //   determineLowercase();
+  // } else if (lowercaseCheck === "yes" || lowercaseCheck === "y") {
+  //   lowercaseCheck = true;
+  //   return lowercaseCheck;
+  // } else if (lowercaseCheck === "no" || lowercaseCheck === "n") {
+  //   lowercaseCheck = false;
+  //   return lowercaseCheck;
+  // } else {
+  //   alert("Please answer Yes or No");
+  //   determineLowercase();
+  // }
 }
 
 //Function used to determine whether the user wants to include numbers in the password
 
 function determineNumbers() {
-  numberCheck = prompt(
+  numberCheck = confirm(
     "Do you want to include numbers in your password? (Yes or No)"
   );
   numberCheck = numberCheck.toLowerCase();
 
-  if (numberCheck === null || numberCheck === "") {
-    alert("Please answer Yes or No");
-    determineNumbers();
-  } else if (numberCheck === "yes" || numberCheck === "y") {
-    numberCheck = true;
-    return numberCheck;
-  } else if (numberCheck === "no" || numberCheck === "n") {
-    numberCheck = false;
-    return numberCheck;
-  } else {
-    alert("Please answer Yes or No");
-    determineNumbers();
-  }
+  // if (numberCheck === null || numberCheck === "") {
+  //   alert("Please answer Yes or No");
+  //   determineNumbers();
+  // } else if (numberCheck === "yes" || numberCheck === "y") {
+  //   numberCheck = true;
+  //   return numberCheck;
+  // } else if (numberCheck === "no" || numberCheck === "n") {
+  //   numberCheck = false;
+  //   return numberCheck;
+  // } else {
+  //   alert("Please answer Yes or No");
+  //   determineNumbers();
+  // }
 }
 
 //Function used to determine whether the user wants to include special characters in the password
 
 function determineSpecial() {
-  specialCheck = prompt(
+  specialCheck = confirm(
     "Do you want to include special characters in your password? (Yes or No)"
   );
   specialCheck = specialCheck.toLowerCase();
 
-  if (specialCheck === null || specialCheck === "") {
-    alert("Please answer Yes or No");
-    determineSpecial();
-  } else if (specialCheck === "yes" || specialCheck === "y") {
-    specialCheck = true;
-    return specialCheck;
-  } else if (specialCheck === "no" || specialCheck === "n") {
-    specialCheck = false;
-    return specialCheck;
-  } else {
-    alert("Please answer Yes or No");
-    determineSpecial();
-  }
+  // if (specialCheck === null || specialCheck === "") {
+  //   alert("Please answer Yes or No");
+  //   determineSpecial();
+  // } else if (specialCheck === "yes" || specialCheck === "y") {
+  //   specialCheck = true;
+  //   return specialCheck;
+  // } else if (specialCheck === "no" || specialCheck === "n") {
+  //   specialCheck = false;
+  //   return specialCheck;
+  // } else {
+  //   alert("Please answer Yes or No");
+  //   determineSpecial();
+  // }
+  return specialCheck;
 }
 
 //Function used to take all the input from the previous functions and generate a password using a random number generator
 // apply method (charAt)
 function generatePassword() {
-  determineLength();
-  console.log(passwordLength);
+  const passwordOptions = getPasswordOptionsPassword();
+  console.log(passwordOptions);
 
-  determineUppercase();
-  console.log(uppercaseCheck);
+  //generate password using the options you have and return
+}
+function getPasswordOptionsPassword() {
+  const passwordOptions = {};
 
-  determineLowercase();
-  console.log(lowercaseCheck);
+  const length = parseInt(determineLength());
 
-  determineNumbers();
-  console.log(numberCheck);
+  const isLowercase = determineLowercase();
 
-  determineSpecial();
-  console.log(specialCheck);
+  const isUppercase = determineUppercase();
+  const isSpecialCharacter = determineSpecial();
+
+  const isNumber = determineNumbers();
+
+  // run validations
+
+  passwordOptions.length = length;
+  passwordOptions.isLowercase = isLowercase;
+
+  return passwordOptions;
+
+  // console.log(passwordLength);
+
+  // console.log(uppercaseCheck);
+
+  // determineLowercase();
+  // console.log(lowercaseCheck);
+
+  // determineNumbers();
+  // console.log(numberCheck);
+
+  // determineSpecial();
+  // console.log(specialCheck);
 }
 //........................................
 
