@@ -153,7 +153,7 @@ function determineUppercase() {
 
 function determineLowercase() {
   lowercaseCheck = prompt(
-    "Do you want to include uppercase letters in your password? (Yes or No)"
+    "Do you want to include lowercase letters in your password? (Yes or No)"
   );
 
   if (lowercaseCheck === null || lowercaseCheck === "") {
@@ -235,14 +235,35 @@ function generatePassword() {
   determineSpecial();
   console.log(specialCheck);
 }
+//........................................
 
-// //forloop
-// for (const i=0, i < passwordLength; i++) {
+// if (uppercaseCheck && lowercaseCheck && numberCheck && specialCheck) {
+//   characters += uppercaseChar + -lowercaseChar + numberChar + specialChar;
+// } else if (uppercaseCheck && numberCheck) {
+//   characters += uppercaseChar + numberChar;
+// } else if (numberCheck && specialCheck) {
+//   characters += numberChar + specialChar;
+// } else if (uppercaseCheck && specialCheck) {
+//   characters += uppercaseChar + specialChar;
+// } else if (uppercaseCheck) {
+//   characters += uppercaseChar;
+// } else if (numberCheck) {
+//   characters += numberChar;
+// } else if (specialCheck) {
+//   characters += specialChar;
+// } else {
+//   characters === lowercaseChar;
+// }
+// //....................
+
+// // generate random password
+// //for loop through array of func
+// for (let i = 0, i < passwordLength; i++) {
 //   password += characters.charAt(Math.floor(Math.random() * characters.length));
 
 // }
 
-// return password
+// return password;
 // }
 
 // function generatePassword
