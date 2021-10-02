@@ -167,9 +167,23 @@ function generatePassword() {
   const passwordArray = [];
 
   // if passwordOptions.isUppercase then push to choices array
+
+  if (passwordOptions.isUppercase) {
+    passwordArray.push(uppercaseArray);
+  }
+
   // if passwordOptions.isLowercase then push to choices array
+
+  if (passwordOptions.isLowercase) {
+    passwordArray.push();
+  }
   // if passwordOptions.isNumbers then push to choices array
+  if (passwordOptions.isNumber) {
+  }
   // if passwordOptions.isSpecial then push to choices array
+
+  if (passwordOptions.isSpecial) {
+  }
 
   // for loop here based on password length
   // get random choice from choices array
