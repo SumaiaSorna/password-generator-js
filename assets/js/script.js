@@ -191,8 +191,6 @@ function generatePassword() {
     passwordArray.push(...specialCharacterArray);
     randomArray.push(randomIndex(specialCharacterArray));
   }
-  console.log(passwordArray);
-  console.log(randomArray);
 
   // for loop here based on password length
 
@@ -200,7 +198,6 @@ function generatePassword() {
     const passwordChar = randomIndex(passwordArray);
     finalPassword.push(passwordChar);
   }
-  console.log(finalPassword);
 
   for (let i = 0; i < randomArray.length; i++) {
     finalPassword[i] = randomArray[i];
@@ -231,7 +228,7 @@ function getPasswordOptionsPassword() {
     }
   } else {
     alert("password length must be a number between 8 to 128");
-    console.log("length", length);
+
     return;
   }
 }
