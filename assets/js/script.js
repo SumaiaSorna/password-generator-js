@@ -87,7 +87,6 @@ const specialCharacterArray = [
   "?",
   "@",
   "[",
-  "  ",
   "]",
   "^",
   "_",
@@ -104,18 +103,7 @@ function determineLength() {
     "Choose how many characters long you'd like your password to be between 8-128 characters"
   );
 
-  if (promptData < 8) {
-    alert("password length must be a number between 8 to 128");
-  } else if (promptData > 128) {
-    alert("Password length must be a number between 8-128 characters");
-  } else if (isNaN(promptData)) {
-    alert("Password length must be a number between 8-128 characters");
-  } else {
-    alert(
-      "The next three screens will ask you what types of characters you would like to be included in your password.If you choose 'No' for all, your password will only contain lowercase letters."
-    );
-    return promptData;
-  }
+  return promptData;
 }
 
 // function used to determine whether the user wants to include uppercase characters in the password
@@ -158,80 +146,96 @@ function determineSpecial() {
   return specialCheck;
 }
 
+// declare a function randomIndex
+
+function randomIndex(arr) {
+  const index = Math.floor(Math.random() * arr.length);
+  const indexValue = arr[index];
+
+  return indexValue;
+}
+
 //Function used to take all the input from the previous functions and generate a password using a random number generator
 // apply method (charAt)
 function generatePassword() {
   const passwordOptions = getPasswordOptionsPassword();
   console.log(passwordOptions);
 
+  // declare password array to store the random characters
   const passwordArray = [];
+
+  const randomArray = [];
+
+  const finalPassword = [];
 
   // if passwordOptions.isUppercase then push to choices array
 
   if (passwordOptions.isUppercase) {
-    passwordArray.push(uppercaseArray);
+    passwordArray.push(...uppercaseArray);
+    randomArray.push(randomIndex(uppercaseArray));
   }
 
   // if passwordOptions.isLowercase then push to choices array
 
   if (passwordOptions.isLowercase) {
-    passwordArray.push();
+    passwordArray.push(...lowercaseArray);
+    randomArray.push(randomIndex(lowercaseArray));
   }
   // if passwordOptions.isNumbers then push to choices array
   if (passwordOptions.isNumber) {
+    passwordArray.push(...numArray);
+    randomArray.push(randomIndex(numArray));
   }
   // if passwordOptions.isSpecial then push to choices array
 
-  if (passwordOptions.isSpecial) {
+  if (passwordOptions.isSpecialCharacter) {
+    passwordArray.push(...specialCharacterArray);
+    randomArray.push(randomIndex(specialCharacterArray));
   }
+  console.log(passwordArray);
+  console.log(randomArray);
 
   // for loop here based on password length
-  // get random choice from choices array
-  // get random character from the corresponding array
-  // push random character to passwordArray
 
-  // convert passwordArray to string
-  // return password string
+  for (let i = 0; i < passwordOptions.length; i++) {
+    const passwordChar = randomIndex(passwordArray);
+    finalPassword.push(passwordChar);
+  }
+  console.log(finalPassword);
+  for (let i = 0; i < randomArray.length; i++) {
+    finalPassword[i] = randomArray[i];
+  }
+  return finalPassword.join("");
 }
 
 function getPasswordOptionsPassword() {
   const passwordOptions = {};
 
   const length = parseInt(determineLength());
-  const isLowercase = determineLowercase();
-  const isUppercase = determineUppercase();
-  const isSpecialCharacter = determineSpecial();
-  const isNumber = determineNumbers();
+  if (length >= 8 && length <= 128) {
+    const isLowercase = determineLowercase();
+    const isUppercase = determineUppercase();
+    const isSpecialCharacter = determineSpecial();
+    const isNumber = determineNumbers();
+    if (!isNumber && !isLowercase && !isLowercase && !isSpecialCharacter) {
+      alert("You have not selected a valid password");
+      return;
+    } else {
+      passwordOptions.length = length;
+      passwordOptions.isUppercase = isUppercase;
+      passwordOptions.isLowercase = isLowercase;
+      passwordOptions.isNumber = isNumber;
+      passwordOptions.isSpecialCharacter = isSpecialCharacter;
 
-  // run validations
-  if (!isNumber && !isLowercase && !isLowercase && !isSpecialCharacter) {
-    alert("messgae");
+      return passwordOptions;
+    }
+  } else {
+    alert("password length must be a number between 8 to 128");
+    console.log("length", length);
     return;
   }
-
-  passwordOptions.length = length;
-  passwordOptions.isUppercase = isUppercase;
-  passwordOptions.isLowercase = isLowercase;
-  passwordOptions.isNumber = isNumber;
-  passwordOptions.isSpecialCharacter = isSpecialCharacter;
-
-  return passwordOptions;
 }
-//.......................................
 
-// // generate random password
-// //for loop through array of func
-// for (let i = 0, i < passwordLength; i++) {
-//   password += characters.charAt(Math.floor(Math.random() * characters.length));
-
-// }
-
-// return password;
-// }
-
-// function generatePassword
-
-// DONT MODIFY !!!!!!!!!!!!!!
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
