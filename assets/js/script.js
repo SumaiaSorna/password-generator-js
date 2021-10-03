@@ -155,11 +155,10 @@ function randomIndex(arr) {
   return indexValue;
 }
 
-//Function used to take all the input from the previous functions and generate a password using a random number generator
-// apply method (charAt)
+//Function to generate password
+
 function generatePassword() {
   const passwordOptions = getPasswordOptionsPassword();
-  console.log(passwordOptions);
 
   // declare password array to store the random characters
   const passwordArray = [];
@@ -202,6 +201,7 @@ function generatePassword() {
     finalPassword.push(passwordChar);
   }
   console.log(finalPassword);
+
   for (let i = 0; i < randomArray.length; i++) {
     finalPassword[i] = randomArray[i];
   }

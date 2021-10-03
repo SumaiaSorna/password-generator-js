@@ -4,7 +4,7 @@ Modified the given starter code to enable employees to generate random passwords
 
 ## Link to live application
 
-Click here to view the deployed application.
+You can view the GitHub page deployed application here
 
 ## Description
 
