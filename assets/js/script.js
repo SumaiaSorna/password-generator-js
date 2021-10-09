@@ -202,6 +202,7 @@ function generatePassword() {
   for (let i = 0; i < randomArray.length; i++) {
     finalPassword[i] = randomArray[i];
   }
+
   return finalPassword.join("");
 }
 
@@ -214,7 +215,7 @@ function getPasswordOptionsPassword() {
     const isUppercase = determineUppercase();
     const isSpecialCharacter = determineSpecial();
     const isNumber = determineNumbers();
-    if (!isNumber && !isLowercase && !isLowercase && !isSpecialCharacter) {
+    if (!isNumber && !isUppercase && !isLowercase && !isSpecialCharacter) {
       alert("You have not selected a valid password");
       return;
     } else {
